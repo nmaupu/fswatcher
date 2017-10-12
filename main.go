@@ -12,6 +12,7 @@ import (
 	"strings"
 )
 
+// Constants to get app name and description
 const (
 	AppName      = "fswatcher"
 	AppDesc      = "Watch filesystem events using inotify"
@@ -19,8 +20,10 @@ const (
 )
 
 var (
+	// AppVersion can be set at release
 	AppVersion string
-	EventsList = map[string]string{
+	// List of all events with their bare name and their associated description
+	eventsList = map[string]string{
 		"IN_ACCESS":        "File was accessed (read).",
 		"IN_MODIFY":        "File was modified.",
 		"IN_ATTRIB":        "Metadata changed, e.g., permissions, timestamps, extended attributes, link count (since Linux 2.6.25), UID, GID, etc. ",
@@ -50,7 +53,7 @@ func main() {
 func getAppDesc() string {
 	var buffer bytes.Buffer
 
-	for k, v := range EventsList {
+	for k, v := range eventsList {
 		buffer.WriteString(fmt.Sprintf("%s : %s\n", k, v))
 	}
 
