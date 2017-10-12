@@ -58,7 +58,7 @@ Options:
 
 In the command parameters, it's possible to get information on the event :
 - `%e` can be used to get the event name
-- `%f` can be used to get the filename source of the event
+- `%f` can be used to get the file name/directory name source of the event
 
 Now, pop an event !
 ```
