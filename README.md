@@ -49,6 +49,27 @@ Options:
   -e, --event=[]            Events to listen to
 ```
 
+## Usage example
+
+```
+# ./bin/fswatcher -c "/tmp/script.sh %f" -e IN_CLOSE_WRITE -e IN_MOVED_TO /tmp/test
+2017/10/12 21:38:01 Listening events [IN_CLOSE_WRITE IN_MOVED_TO] from /tmp/test
+```
+
+In the command parameters, it's possible to get information on the event :
+- `%e` can be used to get the event name
+- `%f` can be used to get the filename source of the event
+
+Now, pop an event !
+```
+echo 42 >> /tmp/test/toto
+```
+
+We can now see in the console :
+```
+2017/10/12 21:38:33 Event received notify.InCloseWrite: "/tmp/test/toto" - executing /tmp/script.sh [/tmp/test/toto]
+```
+
 # Dependencies
 
 - https://github.com/rjeczalik/notify

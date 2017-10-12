@@ -132,7 +132,7 @@ func processEvent(cmd string, e notify.EventInfo) error {
 	ree, _ := regexp.Compile("%e")
 	for _, v := range s[1:] {
 		val := string(ref.ReplaceAll([]byte(v), []byte(e.Path())))
-		val = string(ree.ReplaceAll([]byte(val), []byte(e.Event().String())))
+		val = string(ree.ReplaceAll([]byte(val), []byte(getStringFromEvent(e.Event()))))
 		args = append(args, val)
 	}
 
@@ -174,4 +174,35 @@ func getEventFromString(event string) notify.Event {
 	}
 
 	return 0
+}
+
+func getStringFromEvent(event notify.Event) string {
+	switch event {
+	case notify.InAccess:
+		return "IN_ACCESS"
+	case notify.InModify:
+		return "IN_MODIFY"
+	case notify.InAttrib:
+		return "IN_ATTRIB"
+	case notify.InCloseWrite:
+		return "IN_CLOSE_WRITE"
+	case notify.InCloseNowrite:
+		return "IN_CLOSE_NOWRITE"
+	case notify.InOpen:
+		return "IN_OPEN"
+	case notify.InMovedFrom:
+		return "IN_MOVED_FROM"
+	case notify.InMovedTo:
+		return "IN_MOVED_TO"
+	case notify.InCreate:
+		return "IN_CREATE"
+	case notify.InDelete:
+		return "IN_DELETE"
+	case notify.InDeleteSelf:
+		return "IN_DELETE_SELF"
+	case notify.InMoveSelf:
+		return "IN_MOVE_SELF"
+	}
+
+	return ""
 }

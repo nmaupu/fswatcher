@@ -14,15 +14,15 @@ script:
 - make build
 
 before_deploy:
-- mkdir -p bin
-- GOOS=linux  GOARCH=amd64 go build -o bin/fswatcher_linux-amd64  -ldflags="-X main.AppVersion=$TRAVIS_TAG"
+- mkdir -p bin_release
+- GOOS=linux GOARCH=amd64 go build -o bin_release/fswatcher_linux-amd64 -ldflags="-X main.AppVersion=$TRAVIS_TAG"
 
 deploy:
   provider: releases
   api_key:
     secure: MYcHJm22Mm20UCd4rVj4YWw94iwAadM66FikmxxU38q08lIf5kowtW6pdUDCepCiq82SLt8SP5kLJHqp6qTcI66zgNpiExA04W8ubhFBpjg8s6vnlv548XYB1L7JhiSxfhQiEhfTrdOu86+WrJ0+jwgz9jahzb1PFH5GjJmq4Yrey0yhNyynsh6esVxM9/GJ+TX3nhJ9aYe2Jm5Zf5Z1vXMO60tk2l/s4Upd4IwlZ/ZvewA/lK+3IPgMG1AuGg9gOVq3q97NJaHTdNC+jkLNEdHUhL5r3/pWBynwTKrKUJMOZB0deSKCABrTgxDpMYluSTUWz6T4W2lSA6WUFpxQAOhnUJxXXbJqphBgmjW+3RvmIaPxCnEVvRXu8IrzD70GtJLXzR0sNLqEFQHI43lSPqXZYnPdoCe5IqbQjupBlVLCJGrVcZbSMh6f1ki/926YSCKWW1l3d20miqrFIxm2y4XQyZimOiHk5/qhbNiqJ2hfXDsLphzYFktvdJV36EWh2VvZCZUDbruGIfsj2iN+rRg/m/M5Jijq4GyGjC4LGZ7fzC+1Nmx0bsNu1PvUweZRz+1GLDWiSj/mXGMMLBz1eXbmtIx12DZ1E5pt/iLDaC/on6YU7fiT38Jk0lwUCGFwOAZ06/o24gCVBSmlP5CMbbedFTB6LRSmark4gbeHZuc=
   file_glob: true
-  file: bin/fswatcher_linux-amd64
+  file: bin_release/*
   skip_cleanup: true
   on:
     tags: true
