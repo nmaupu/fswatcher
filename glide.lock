@@ -1,0 +1,12 @@
+hash: 46001e95c62261e72e349851c7aa70afff32807ced3277b9e2bdd06fa35229bf
+updated: 2017-10-12T16:39:09.358505343+02:00
+imports:
+- name: github.com/jawher/mow.cli
+  version: 89bd73e5017374498afb615659500c3559ff42b3
+- name: github.com/rjeczalik/notify
+  version: 1aa3b9de8d8410413787ea2573433b6fed5f3685
+- name: golang.org/x/sys
+  version: ebfc5b4631820b793c9010c87fd8fef0f39eb082
+  subpackages:
+  - unix
+testImports: []

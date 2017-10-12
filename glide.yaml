@@ -1,0 +1,5 @@
+package: github.com/nmaupu/fswatcher
+import:
+- package: github.com/rjeczalik/notify
+- package: github.com/jawher/mow.cli
+  version: ^1.0.2
